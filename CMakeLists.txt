@@ -2,11 +2,22 @@
 #
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-cmake_minimum_required(VERSION 3.10)
+cmake_minimum_required(VERSION 3.21)
+
+if (NOT DEFINED CMAKE_CXX_STANDARD)
+  set(CMAKE_CXX_STANDARD 20)
+endif()
+
+set(CMAKE_CXX_EXTENSIONS OFF)
 
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/build_files/cmake/Modules")
 
-project(Noodle)
+project(
+  Noodle
+  VERSION 0.0.1
+  DESCRIPTION ""
+  LANGUAGES CXX C
+)
 
 enable_testing()
 include(CTest)
@@ -29,4 +40,6 @@ mark_as_advanced(WITH_FRONTEND)
 
 add_subdirectory(modules)
 
-# add_subdirectory(tests)
+if(BUILD_TESTING)
+  add_subdirectory(tests)
+endif()
