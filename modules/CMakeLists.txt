@@ -1,4 +1,4 @@
-# SPDX-FileCopyrightText: 2024 Noodle Authors
+# SPDX-FileCopyrightText: 2024 Noodle Contributors
 #
 # SPDX-License-Identifier: GPL-3.0-or-later
 

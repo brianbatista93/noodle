@@ -1,8 +1,13 @@
-# SPDX-FileCopyrightText: 2024 Noodle Authors
+# SPDX-FileCopyrightText: 2024 Noodle Contributors
 #
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 add_executable(noodle_backend main.cpp)
+
+configure_file(core/noodle_version.hh.in core/noodle_version.hh @ONLY)
+
+target_include_directories(noodle_backend PRIVATE ${CMAKE_CURRENT_BINARY_DIR})
+target_include_directories(noodle_backend PUBLIC ${CMAKE_SOURCE_DIR})
 
 install(PROGRAMS
     $<TARGET_FILE:noodle_backend>

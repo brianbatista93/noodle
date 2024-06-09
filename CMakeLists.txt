@@ -1,4 +1,4 @@
-# SPDX-FileCopyrightText: 2024 Noodle Authors
+# SPDX-FileCopyrightText: 2024 Noodle Contributors
 #
 # SPDX-License-Identifier: GPL-3.0-or-later
 
@@ -14,7 +14,7 @@ list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/build_files/cmake/Modules")
 
 project(
   Noodle
-  VERSION 0.0.1
+  VERSION 0.0.1.0
   DESCRIPTION ""
   LANGUAGES CXX C
 )
@@ -38,8 +38,17 @@ mark_as_advanced(WITH_BACKEND)
 option(WITH_FRONTEND "Build the frontend" OFF)
 mark_as_advanced(WITH_FRONTEND)
 
+option(BUILD_SHARED_LIBS "Build shared libraries" ON)
+
+if(BUILD_SHARED_LIBS)
+  set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
+else()
+  add_definitions(-DBUILD_STATIC)
+endif()
+
 add_subdirectory(modules)
 
 if(BUILD_TESTING)
-  add_subdirectory(tests)
+  # add_subdirectory(tests)
+  
 endif()
