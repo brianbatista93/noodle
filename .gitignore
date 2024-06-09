@@ -1,0 +1,10 @@
+# Build files
+/build/
+/out/
+
+# Visual Studio
+/.vs/
+/.vscode/
+CMakeSettings.json
+CMakePresets.json
+CMakeUserPresets.json
